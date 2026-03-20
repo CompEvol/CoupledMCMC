@@ -25,8 +25,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.math.MathException;
-import org.apache.commons.math.distribution.BetaDistributionImpl;
+import org.apache.commons.statistics.distribution.BetaDistribution;
 
 @Citations(
 		{
@@ -87,7 +86,7 @@ public class CoupledMCMC extends MCMC {
 	Thread [] threads;
 	
 	/** beta distribution for spacing*/
-	org.apache.commons.math.distribution.BetaDistributionImpl m_dist;
+	BetaDistribution m_dist;
 	
 	/** keep track of time taken between logs to estimate speed **/
     long startLogTime;
@@ -129,7 +128,7 @@ public class CoupledMCMC extends MCMC {
 		optimise = optimiseInput.get();
 		
 		if (useBetaDistributionInput.get()) {
-			m_dist = new BetaDistributionImpl(1, deltaTemperature);
+			m_dist = BetaDistribution.of(1, deltaTemperature);
 			spacing = Spacing.Beta;
 		}else {
 			spacing = Spacing.Geometric;
@@ -276,7 +275,7 @@ public class CoupledMCMC extends MCMC {
 			if (deltaTemperature>0) {
 				try {
 					beta = 1-m_dist.cumulativeProbability(i/(double) chains.length);
-				} catch (MathException e) {
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -488,7 +487,7 @@ public class CoupledMCMC extends MCMC {
 	            
 	            // if the spacing is using a beta distribution, update the beta distribution
 	            if (spacing==Spacing.Beta)
-	            	m_dist = new BetaDistributionImpl(1, deltaTemperature);
+	            	m_dist = BetaDistribution.of(1, deltaTemperature);
 	            
 	            // set new temperatures asynchronously, in same order as before
 	            for (int k = 0; k < n; k++) {
@@ -670,7 +669,7 @@ public class CoupledMCMC extends MCMC {
 	            
 	            // if the spacing is using a beta distribution, update the beta distribution
 	            if (spacing==Spacing.Beta)
-	            	m_dist = new BetaDistributionImpl(1, deltaTemperature);
+	            	m_dist = BetaDistribution.of(1, deltaTemperature);
 	            
 	            // set new temperatures asynchronously, in same order as before
 	            for (int k = 0; k < n; k++) {

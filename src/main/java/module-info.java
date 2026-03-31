@@ -1,4 +1,4 @@
-open module beast.coupled.mcmc {
+open module coupled.mcmc {
     requires beast.base;
     requires beast.pkgmgmt;
     requires static beast.fx;

@@ -1,17 +1,7 @@
-<package name="CoupledMCMC" version="1.2.2">
-    <depends on='BEAST.base' atleast='2.7.5'/>
-    <depends on='BEAST.app' atleast='2.7.5'/>
-  
-  <packageapp description="MCMC to Coupled MCMC converter"
-              class="coupledMCMC.MCMC2CoupledMCMC"
-              args=""
-            />
+<package name='CoupledMCMC' version='1.3.0'>
+    <depends on='BEAST.base' atleast='2.8.0'/>
 
-	<packageapp description="Server for running MC3 remotely: for every chain (hot or cold) one server should be running"
-        class="coupledMCMC.RemoteMC3Server"
-        args=""/>
-        
-   <service type="beast.base.core.BEASTInterface">
+    <service type="beast.base.core.BEASTInterface">
         <provider classname="coupledMCMC.CoupledLogger"/>
         <provider classname="coupledMCMC.CoupledMCMC"/>
         <provider classname="coupledMCMC.DummyLogger"/>
@@ -19,7 +9,6 @@
         <provider classname="coupledMCMC.HeatedChainLikelihoodOnly"/>
         <provider classname="coupledMCMC.MCMC2CoupledMCMC"/>
         <provider classname="coupledMCMC.MultiCoupledMCMC"/>
-        <provider classname="coupledMCMC.RemoteCoupledLogger"/>
         <provider classname="coupledMCMC.RemoteCoupledMCMC"/>
         <provider classname="coupledMCMC.RemoteMC3Server"/>
         <provider classname="coupledMCMC.SerialMCMC"/>

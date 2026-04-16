@@ -7,4 +7,4 @@
 /build/
 /build-lib/
 /build-beast/
-/dist/
+/dist/target/

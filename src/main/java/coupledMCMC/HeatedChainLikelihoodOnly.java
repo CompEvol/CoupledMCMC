@@ -4,7 +4,6 @@ import beast.base.core.BEASTInterface;
 import beast.base.core.Description;
 import beast.base.inference.Distribution;
 import beast.base.inference.Operator;
-import beast.base.inference.Evaluator;
 import beast.base.util.Randomizer;
 
 @Description("Like heated chain, but samples log(prior) + beta * log(likelihood) "
@@ -76,33 +75,7 @@ public class HeatedChainLikelihoodOnly extends HeatedChain {
 
 //        if (printDebugInfo) System.err.print("\n" + sampleNr + " " + operator.getName()+ ":");
 
-        final Distribution evaluatorDistribution = operator.getEvaluatorDistribution();
-        Evaluator evaluator = null;
-
-        if (evaluatorDistribution != null) {
-            evaluator = new Evaluator() {
-                @Override
-                public double evaluate() {
-                    double logP = 0.0;
-
-                    state.storeCalculationNodes();
-                    state.checkCalculationNodesDirtiness();
-
-                    try {
-                        logP = evaluatorDistribution.calculateLogP();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        System.exit(1);
-                    }
-
-                    state.restore();
-                    state.store(sampleNr);
-
-                    return logP;
-                }
-            };
-        }
-        final double logHastingsRatio = operator.proposal(evaluator);
+        final double logHastingsRatio = operator.proposal();
 
         if (logHastingsRatio != Double.NEGATIVE_INFINITY) {
 

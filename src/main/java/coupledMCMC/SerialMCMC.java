@@ -32,10 +32,9 @@ import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.commons.math.MathException;
-import org.apache.commons.math.distribution.BetaDistributionImpl;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.apache.commons.statistics.distribution.BetaDistribution;
+import beast.base.internal.json.JSONException;
+import beast.base.internal.json.JSONObject;
 import org.xml.sax.SAXException;
 
 		
@@ -72,7 +71,7 @@ public class SerialMCMC extends MCMC {
 	// Thread [] threads;
 	
 	/** beta distribution for spacing*/
-	org.apache.commons.math.distribution.BetaDistributionImpl m_dist;
+	BetaDistribution m_dist;
 	
 	/** keep track of time taken between logs to estimate speed **/
     long startLogTime;
@@ -206,7 +205,7 @@ public class SerialMCMC extends MCMC {
 		optimise = optimiseInput.get();
 		
 		if (useBetaDistributionInput.get()) {
-			m_dist = new BetaDistributionImpl(1, deltaTemperature);
+			m_dist = BetaDistribution.of(1, deltaTemperature);
 			spacing = Spacing.Beta;
 		} else {
 			spacing = Spacing.Geometric;
@@ -423,7 +422,7 @@ public class SerialMCMC extends MCMC {
 			double beta=-1;
 			try {
 				beta = 1-m_dist.cumulativeProbability(i/(double) chains.length);
-			} catch (MathException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return 1/beta -1;

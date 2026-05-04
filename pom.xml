@@ -11,7 +11,7 @@
     <name>CoupledMCMC</name>
     <description>Coupled MCMC (MC3) for BEAST</description>
 
-    <url>https://github.com/nicfel/CoupledMCMC</url>
+    <url>https://github.com/CompEvol/CoupledMCMC</url>
 
     <licenses>
         <license>
@@ -32,9 +32,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/nicfel/CoupledMCMC.git</connection>
-        <developerConnection>scm:git:ssh://github.com:nicfel/CoupledMCMC.git</developerConnection>
-        <url>https://github.com/nicfel/CoupledMCMC</url>
+        <connection>scm:git:git://github.com/CompEvol/CoupledMCMC.git</connection>
+        <developerConnection>scm:git:ssh://github.com:CompEvol/CoupledMCMC.git</developerConnection>
+        <url>https://github.com/CompEvol/CoupledMCMC</url>
     </scm>
 
     <properties>

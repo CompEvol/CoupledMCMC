@@ -50,7 +50,7 @@
         <beast.main>beast.base.minimal.BeastMain</beast.main>
         <beast.args/>
         <beast.pkg.name>CoupledMCMC</beast.pkg.name>
-        <beast.pkg.version>1.3.0-SNAPSHOT</beast.pkg.version>
+        <beast.pkg.version>1.3.0</beast.pkg.version>
     </properties>
 
     <dependencies>

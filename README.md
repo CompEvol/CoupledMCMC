@@ -8,7 +8,7 @@ Parallel tempering (Metropolis-coupled MCMC) for [BEAST 3](https://github.com/Co
 <dependency>
     <groupId>io.github.compevol</groupId>
     <artifactId>coupled-mcmc</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.3.0-beta1</version>
 </dependency>
 ```
 

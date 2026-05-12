@@ -1,19 +1,9 @@
 <beast version='2.0'
-       namespace='beastfx.app.beauti:beastfx.app.inputeditor:beast.pkgmgmt:beast.base.core:beast.base.inference:beast.base.evolution.branchratemodel:beast.base.evolution.speciation:beast.base.evolution.tree.coalescent:beast.base.util:beast.base.math:beast.evolution.nuc:beast.base.evolution.operator:beast.base.inference.operator:beast.base.evolution.sitemodel:beast.base.evolution.substitutionmodel:beast.base.evolution.likelihood:beast.evolution:beast.base.inference.distribution'
+       namespace='beast.base.spec.inference.parameter:beast.base.spec.domain:beastfx.app.beauti:beastfx.app.inputeditor:beast.pkgmgmt:beast.base.core:beast.base.inference:beast.base.evolution.branchratemodel:beast.base.evolution.speciation:beast.base.evolution.tree.coalescent:beast.base.util:beast.base.math:beast.evolution.nuc:beast.base.evolution.operator:beast.base.inference.operator:beast.base.evolution.sitemodel:beast.base.evolution.substitutionmodel:beast.base.evolution.likelihood:beast.evolution:beast.base.inference.distribution'
 	templateinfo='template for standard phylogenetic analysis,&lt;br> supporting tip-date analysis and calibrations'>
 
 <map name='connect' reserved='true'>beastfx.app.inputeditor.BeautiConnector</map>
 <map name='subtemplate' reserved='true'>beastfx.app.inputeditor.BeautiSubTemplate</map>
-<map name='Uniform'>beast.base.inference.distribution.Uniform</map>
-<map name='Normal'>beast.base.inference.distribution.Normal</map>
-<map name='OneOnX'>beast.base.inference.distribution.OneOnX</map>
-<map name='LogNormal'>beast.base.inference.distribution.LogNormalDistributionModel</map>
-<map name='Exponential'>beast.base.inference.distribution.Exponential</map>
-<map name='Gamma'>beast.base.inference.distribution.Gamma</map>
-<map name='Beta'>beast.base.inference.distribution.Beta</map>
-<map name='LaplaceDistribution'>beast.base.inference.distribution.LaplaceDistribution</map>
-<map name='InverseGamma'>beast.base.inference.distribution.InverseGamma</map>
-<map name='prior'>beast.base.inference.distribution.Prior</map>
 
 <mergewith point='runnables'>
         

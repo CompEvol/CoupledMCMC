@@ -197,7 +197,7 @@ public class CoupledMCMC extends MCMC {
 		// check if the loggers have a same issue
         String sMCMCMC = this.getClass().getName();
 		while (sMCMCMC.length() > 0) {
-			sXML = sXML.replaceAll("\\b" + CoupledMCMC.class.getName() + "\\b",
+			sXML = sXML.replaceAll("\\b" + HeatedChain.class.getName() + "\\b",
 					heatLikelihoodOnlyInput.get()
 						? HeatedChainLikelihoodOnly.class.getName()
 						: HeatedChain.class.getName());

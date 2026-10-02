@@ -774,23 +774,23 @@ public class CoupledMCMC extends MCMC {
 		
 		
 		for (int i = 0; i < operatorList1.size(); i++){
-			Operator operator1 = operatorList1.get(i);
-			Operator operator2 = operatorList2.get(i);
-
-		    int m_nNrRejected = operator1.get_m_nNrRejected();
-		    int m_nNrAccepted = operator1.get_m_nNrAccepted();
-		    int m_nNrRejectedForCorrection = operator1.get_m_nNrRejectedForCorrection();
-		    int m_nNrAcceptedForCorrection = operator1.get_m_nNrAcceptedForCorrection();
-		    
-		    operator1.setAcceptedRejected(operator2.get_m_nNrRejected(), operator2.get_m_nNrAccepted(), operator2.get_m_nNrRejectedForCorrection(), operator2.get_m_nNrAcceptedForCorrection());
-		    operator2.setAcceptedRejected(m_nNrAccepted, m_nNrRejected, m_nNrAcceptedForCorrection, m_nNrRejectedForCorrection);
-		    
-		    
-		    double coercableParameterValue = operator1.getCoercableParameterValue();
-		    operator1.setCoercableParameterValue(operator2.getCoercableParameterValue());
-		    operator2.setCoercableParameterValue(coercableParameterValue);
-			
+			swapTuning(operatorList1.get(i), operatorList2.get(i));
 		}		
+	}
+
+	// operators tune themselves from their acceptance rate, so the counts must travel with the tuned value
+	static void swapTuning(Operator operator1, Operator operator2) {
+		int accepted = operator1.get_m_nNrAccepted();
+		int rejected = operator1.get_m_nNrRejected();
+		int acceptedForCorrection = operator1.get_m_nNrAcceptedForCorrection();
+		int rejectedForCorrection = operator1.get_m_nNrRejectedForCorrection();
+		operator1.setAcceptedRejected(operator2.get_m_nNrAccepted(), operator2.get_m_nNrRejected(),
+				operator2.get_m_nNrAcceptedForCorrection(), operator2.get_m_nNrRejectedForCorrection());
+		operator2.setAcceptedRejected(accepted, rejected, acceptedForCorrection, rejectedForCorrection);
+
+		double coercableParameterValue = operator1.getCoercableParameterValue();
+		operator1.setCoercableParameterValue(operator2.getCoercableParameterValue());
+		operator2.setCoercableParameterValue(coercableParameterValue);
 	}
 	
 	/* makes the schedule of when to swap which chains */

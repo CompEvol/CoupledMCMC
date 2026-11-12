@@ -862,7 +862,7 @@ public class CoupledMCMC extends MCMC {
 			if (acceptedSwaps.get(k))
 				p_local += 1;
 		
-		p_local /= acceptedSwaps.size();
+		p_local /= acceptedSwaps.size() - acceptedSwaps.size()/10;
 		
 		
 		

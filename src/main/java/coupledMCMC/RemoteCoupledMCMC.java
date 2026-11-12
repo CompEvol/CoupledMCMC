@@ -650,7 +650,7 @@ public class RemoteCoupledMCMC extends MCMC {
 		for (int k = acceptedSwaps.size()/10; k < acceptedSwaps.size(); k++)
 			if (acceptedSwaps.get(k))
 				p_local += 1;
-		p_local /= acceptedSwaps.size();
+		p_local /= acceptedSwaps.size() - acceptedSwaps.size()/10;
 		
 		
 		
